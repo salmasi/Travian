@@ -9,7 +9,12 @@ builder.Services.AddSwaggerGen();
 // در فایل Program.cs
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IBruteForceProtectionService, BruteForceProtectionService>();
-builder.Services.AddScoped<IBattleCalculator, BattleCalculator>();
+builder.Services.AddScoped<IBattleCalculatorService, BattleCalculatorService>();
+builder.Services.AddSingleton<IResourceProductionService, ResourceProductionService>();
+builder.Services.AddScoped<INotificationService, NotificationService>();
+
+// برای سرویس تولید منابع
+builder.Services.AddHostedService<ResourceProductionService>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("Frontend", policy =>

@@ -38,6 +38,15 @@ public class AuthController : ControllerBase
             throw new AppException("نام کاربری یا رمز عبور نادرست است");
         }
 
+        if (player.FailedLoginAttempts >= 5 && player.LockoutEnd > DateTime.UtcNow)
+            throw new AccountLockedException();
+
+        if (!VerifyPassword(password, player.PasswordHash))
+        {
+            player.FailedLoginAttempts++;
+            await _context.SaveChangesAsync();
+            throw new AuthFailedException();
+        }
         // در صورت موفقیت‌آمیز بودن
         await _bruteForceService.RecordSuccessfulAttempt(usernameOrEmail, ipAddress);
 
