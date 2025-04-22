@@ -1,31 +1,50 @@
-import { defineStore } from 'pinia'
-import { ref } from 'vue'
-
+// stores/gameStore.js
 export const useGameStore = defineStore('game', () => {
-  const player = ref(null)
-  const currentVillage = ref(null)
   const resources = ref({
     wood: 500,
     clay: 500,
     iron: 500,
     crop: 500
-  })
+  });
 
-  async function login(username, password) {
-    const response = await fetch('/api/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ username, password })
-    })
-    player.value = await response.json()
+  const buildings = ref([]);
+  let updateInterval;
+
+  // محاسبه تولید در دقیقه
+  const productionRates = computed(() => {
+    const rates = { wood: 0, clay: 0, iron: 0, crop: 0 };
+    
+    buildings.value.forEach(building => {
+      const rate = building.baseRate + (building.ratePerLevel * building.level);
+      
+      switch(building.type) {
+        case 'woodcutter': rates.wood += rate; break;
+        case 'clay_pit': rates.clay += rate; break;
+        case 'iron_mine': rates.iron += rate; break;
+        case 'crop_farm': rates.crop += rate; break;
+      }
+    });
+    
+    return rates;
+  });
+
+  // شروع تولید خودکار
+  function startProduction() {
+    updateInterval = setInterval(async () => {
+      await fetch('/api/village/update-resources', { method: 'POST' });
+      await loadVillageData(); // بروزرسانی وضعیت
+    }, 60000); // هر 1 دقیقه
   }
 
-  async function loadVillage(villageId) {
-    const response = await fetch(`/api/village/${villageId}`)
-    currentVillage.value = await response.json()
+  function stopProduction() {
+    clearInterval(updateInterval);
   }
 
-  return { player, currentVillage, resources, login, loadVillage }
-})
+  return { 
+    resources, 
+    buildings,
+    productionRates,
+    startProduction,
+    stopProduction
+  };
+});
