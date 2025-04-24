@@ -23,6 +23,7 @@ builder.Services.Configure<JwtConfig>(builder.Configuration.GetSection("JwtConfi
 builder.Services.Configure<EmailOptions>(builder.Configuration.GetSection("EmailSettings"));
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IViewRenderer, RazorViewRenderer>();
+builder.Services.AddScoped<IGameService, GameService>();
 builder.Services.AddRazorPages();
 // اضافه کردن MailKit
 builder.Services.AddMailKit(config =>
