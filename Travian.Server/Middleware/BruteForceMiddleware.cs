@@ -1,3 +1,5 @@
+namespace YourProjectName.Services;
+
 // در فایل Middleware/BruteForceMiddleware.cs
 public class BruteForceMiddleware
 {
@@ -29,4 +31,3 @@ public class BruteForceMiddleware
 }
 
 // در Program.cs قبل از app.MapControllers():
-app.UseMiddleware<BruteForceMiddleware>();

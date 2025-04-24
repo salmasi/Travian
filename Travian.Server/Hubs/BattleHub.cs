@@ -1,3 +1,6 @@
+using Microsoft.AspNetCore.SignalR;
+
+namespace YourProjectName.Services;
 // Hubs/BattleHub.cs
 public class BattleHub : Hub
 {

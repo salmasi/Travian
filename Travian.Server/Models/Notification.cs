@@ -1,3 +1,5 @@
+namespace YourProjectName.Models;
+
 public abstract class Notification
 {
     public Guid Id { get; } = Guid.NewGuid();

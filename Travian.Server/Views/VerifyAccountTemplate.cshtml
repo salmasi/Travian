@@ -1,0 +1,19 @@
+@model YourProjectName.Models.EmailTemplates.VerifyAccountModel
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <title>تایید ایمیل</title>
+</head>
+<body>
+    <div style="font-family: Tahoma; max-width: 600px; margin: auto;">
+        <h2 style="color: #2b6cb0;">خوش آمدید @Model.Username!</h2>
+        <p>برای فعال سازی حساب خود روی دکمه زیر کلیک کنید:</p>
+        <a href="@Model.VerificationLink" 
+           style="display: inline-block; padding: 10px 20px; background: #4299e1; color: white; text-decoration: none; border-radius: 4px;">
+           تایید ایمیل
+        </a>
+        <p>اگر شما این درخواست را انجام نداده‌اید، این ایمیل را نادیده بگیرید.</p>
+    </div>
+</body>
+</html>

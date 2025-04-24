@@ -1,3 +1,4 @@
+namespace YourProjectName.Services;
 // Services/AttackProcessingService.cs
 public class AttackProcessingService : BackgroundService
 {

@@ -1,3 +1,5 @@
+namespace YourProjectName.Services;
+
 // Services/Resources/IResourceProductionService.cs
 public interface IResourceProductionService
 {

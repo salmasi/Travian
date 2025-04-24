@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using YourProjectName.Domain.Entities;
+using YourProjectName.Models;
 
 namespace YourProjectName.Services
 {

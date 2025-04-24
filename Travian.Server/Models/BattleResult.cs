@@ -1,3 +1,6 @@
+namespace YourProjectName.Models;
+
+
 public class BattleResult
 {
     public BattleOutcome Outcome { get; set; }

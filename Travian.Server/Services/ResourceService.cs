@@ -1,3 +1,5 @@
+namespace YourProjectName.Services;
+
 // Services/ResourceService.cs
 public class ResourceService : IResourceService
 {

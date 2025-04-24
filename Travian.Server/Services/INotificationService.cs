@@ -1,3 +1,5 @@
+namespace YourProjectName.Services;
+
 // Services/Notification/INotificationService.cs
 public interface INotificationService
 {

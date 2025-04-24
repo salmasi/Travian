@@ -1,3 +1,6 @@
+using Microsoft.AspNetCore.Mvc;
+
+namespace YourProjectName.Services;
 [ApiController]
 [Route("api/village/{villageId}/resources")]
 public class ResourceController : ControllerBase

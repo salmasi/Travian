@@ -1,3 +1,6 @@
+
+namespace YourProjectName.Services;
+
 public class GameService : IGameService
 {
     private readonly GameDbContext _context;

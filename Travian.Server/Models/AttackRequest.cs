@@ -1,3 +1,5 @@
+namespace YourProjectName.Services;
+
 public class AttackRequest
 {
     public Guid AttackerVillageId { get; set; }

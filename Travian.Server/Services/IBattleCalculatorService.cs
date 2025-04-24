@@ -1,3 +1,5 @@
+namespace YourProjectName.Services;
+
 // Services/BattleCalculator/IBattleCalculatorService.cs
 public interface IBattleCalculatorService
 {
